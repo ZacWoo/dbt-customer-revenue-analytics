@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: One row per customer.
+    columns:
+      - name: customer_id
+        description: Unique customer ID.
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_orders
+    description: One row per order.
+    columns:
+      - name: order_id
+        description: Unique order ID.
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: Customer associated with the order.
+        tests:
+          - not_null
+
+  - name: fct_customer_revenue
+    description: One row per customer with revenue and repeat purchase metrics.
+    columns:
+      - name: customer_id
+        description: Unique customer ID.
+        tests:
+          - unique
+          - not_null
+
+  - name: daily_revenue
+    description: One row per day with total orders, total revenue, and average order value.
+    columns:
+      - name: order_date
+        description: Date of the order activity.
+        tests:
+          - unique
+          - not_null
+
+      - name: total_orders
+        description: Number of orders placed on that date.
+        tests:
+          - not_null
+
+      - name: total_revenue
+        description: Total revenue generated on that date.
+        tests:
+          - not_null
+
+      - name: average_order_value
+        description: Average order value for that date.
+        tests:
+          - not_null
