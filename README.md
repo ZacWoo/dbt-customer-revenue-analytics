@@ -1,15 +1,69 @@
-Welcome to your new dbt project!
+# dbt Customer Revenue Analytics
 
-### Using the starter project
+This project demonstrates an analytics engineering workflow using dbt, Snowflake, and GitHub.
 
-Try running the following commands:
-- dbt run
-- dbt test
+The goal is to transform customer and order data into business-ready analytics models that answer questions like:
 
+- Who are our highest-value customers?
+- How much revenue does each customer generate?
+- Which customers are repeat buyers vs one-time buyers?
+- What is daily revenue, order volume, and average order value?
+- What share of revenue comes from each customer segment?
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+## Tech Stack
+
+- dbt Core
+- Snowflake
+- SQL
+- Git / GitHub
+- VS Code
+
+## Project Structure
+
+```text
+models/
+  staging/
+    stg_customers.sql
+    stg_orders.sql
+
+  marts/
+    int_customer_orders.sql
+    fct_customer_revenue.sql
+    daily_revenue.sql
+    customer_segment_summary.sql
+
+## Models
+
+### Staging Models
+
+`stg_customers`  
+Creates clean customer-level data.
+
+`stg_orders`  
+Creates clean order-level data.
+
+### Intermediate Model
+
+`int_customer_orders`  
+Joins customers and orders together.
+
+### Mart Models
+
+`fct_customer_revenue`  
+Creates one row per customer with total orders, total revenue, first order date, most recent order date, and customer type.
+
+`daily_revenue`  
+Creates one row per day with total orders, total revenue, and average order value.
+
+`customer_segment_summary`  
+Summarizes revenue by customer type, such as repeat customers vs one-time customers.
+
+## Data Quality Tests
+
+This project includes dbt tests for:
+
+- Unique customer IDs
+- Non-null customer IDs
+- Unique order IDs
+- Non-null order IDs
+- Non-null daily revenue fields
