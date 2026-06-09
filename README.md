@@ -58,6 +58,21 @@ Creates one row per day with total orders, total revenue, and average order valu
 `customer_segment_summary`  
 Summarizes revenue by customer type, such as repeat customers vs one-time customers.
 
+## Orchestration with Airflow
+
+This project includes an Airflow DAG that orchestrates the dbt workflow.
+
+The DAG runs:
+
+1. `dbt run`
+2. `dbt test`
+
+This simulates a daily production analytics pipeline where customer revenue models are refreshed in Snowflake and then tested for data quality.
+
+DAG file:
+
+`dags/customer_revenue_dbt_pipeline.py`
+
 ## Data Quality Tests
 
 This project includes dbt tests for:
