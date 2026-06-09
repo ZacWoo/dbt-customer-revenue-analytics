@@ -1,6 +1,6 @@
 # dbt Customer Revenue Analytics
 
-This project demonstrates an analytics engineering workflow using dbt, Snowflake, and GitHub.
+This project demonstrates an analytics engineering workflow using dbt, Snowflake, Airflow and GitHub.
 
 The goal is to transform customer and order data into business-ready analytics models that answer questions like:
 
@@ -14,6 +14,7 @@ The goal is to transform customer and order data into business-ready analytics m
 
 - dbt Core
 - Snowflake
+- Airflow
 - SQL
 - Git / GitHub
 - VS Code
